@@ -2,6 +2,18 @@
 #include <string>
 #include <vector>
 
+/*
+* kmp의 핵심
+* 
+* 1. 본문 문자열에서 후진하지 않는다
+* 2. 실패함수는 패턴의 앞뒤로 동일순서 일치하는 부분이 존재하는지 찾는것
+* 2-1. 앞뒤의 동일순서는 abcabca 와 같이 abc'a', 'a'bca로 '겹칠' 수 있다
+* 
+* * 직접 만든 failure2 함수는 플래그변수 사용하며, 매번 비교
+* * 만들다보니 pi[i] 는 pi[i-1]을 알면 인덱스 타고 올라가며, 일일이 같은 비교를 할 필요 없다
+* * 따라서 교재의 failure1 함수가 효율적
+*/
+
 std::vector<int> failure1(const std::string& pat)
 {
 	std::vector<int> pi(pat.size());
